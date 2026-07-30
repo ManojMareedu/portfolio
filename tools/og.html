@@ -16,6 +16,14 @@
     display: flex; flex-direction: column; justify-content: center;
     padding: 74px 80px;
   }
+  .face {
+    position: absolute; right: 74px; top: 50%; translate: 0 -50%;
+    width: 320px; aspect-ratio: 4 / 5;
+    border-radius: 24px; padding: 3px;
+    background: linear-gradient(150deg, #8b5cf6, #22d3ee);
+    box-shadow: 0 30px 70px -30px rgba(0, 0, 0, .9);
+  }
+  .face img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%; border-radius: 21px; }
   .blob { position: absolute; border-radius: 50%; filter: blur(90px); mix-blend-mode: screen; }
   .b1 { width: 700px; height: 700px; top: -280px; left: -160px; background: radial-gradient(circle, #7c3aed, transparent 65%); opacity: .75; }
   .b2 { width: 620px; height: 620px; bottom: -300px; right: -120px; background: radial-gradient(circle, #0891b2, transparent 65%); opacity: .7; }
@@ -34,6 +42,7 @@
   }
   .dot { width: 9px; height: 9px; border-radius: 50%; background: #34d399; }
   h1 {
+    max-width: 700px;
     margin: 26px 0 0; font-family: "Space Grotesk", sans-serif; font-weight: 700;
     font-size: 96px; line-height: .95; letter-spacing: -.045em;
   }
@@ -42,11 +51,12 @@
     -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
   }
   .tag {
+    max-width: 700px;
     margin-top: 22px; font-family: "Space Grotesk", sans-serif; font-weight: 500;
     font-size: 34px; letter-spacing: -.02em;
   }
   .tag i { font-style: normal; color: #8792ad; }
-  .strip { display: flex; gap: 40px; margin-top: 40px; font-family: "JetBrains Mono", monospace; font-size: 18px; color: #b6c0d9; }
+  .strip { display: flex; gap: 36px; max-width: 700px; flex-wrap: wrap; margin-top: 40px; font-family: "JetBrains Mono", monospace; font-size: 18px; color: #b6c0d9; }
   .strip b { display: block; font-size: 15px; font-weight: 400; color: #8792ad; letter-spacing: .06em; text-transform: uppercase; }
   .strip u {
     text-decoration: none; font-weight: 700; font-size: 24px;
@@ -57,6 +67,8 @@
 </head>
 <body>
   <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="grid"></div>
+
+  <figure class="face"><img src="../headshot.jpg" alt=""></figure>
 
   <main>
     <span class="pill"><span class="dot"></span> AI/ML Engineer &amp; Data Scientist · IEEE published</span>

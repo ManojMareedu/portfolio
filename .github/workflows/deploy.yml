@@ -33,7 +33,7 @@ jobs:
       - name: Assemble publish directory
         run: |
           mkdir -p _site
-          cp index.html styles.css app.js og.png Manoj_Mareedu_Resume.pdf _site/
+          cp index.html styles.css app.js og.png headshot.jpg Manoj_Mareedu_Resume.pdf _site/
           test -s _site/Manoj_Mareedu_Resume.pdf
 
       - uses: actions/upload-pages-artifact@v3
