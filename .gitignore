@@ -1,0 +1,12 @@
+# Private working files — these must never be published.
+# Profile-context.md holds a phone number and confidential client detail;
+# feedback.md is an internal audit. Both stay local.
+Profile-context.md
+feedback.md
+
+# Local tooling and OS noise
+.claude/
+.DS_Store
+__pycache__/
+*.pyc
+*.log

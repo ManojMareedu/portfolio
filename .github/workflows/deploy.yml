@@ -1,0 +1,53 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never run two deploys at once; let a newer push win.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # enablement:true turns Pages on for the repo and sets its source to
+      # Actions, so no manual repository setting is required.
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Validate the site
+        run: python3 tools/check.py
+
+      # Copy only the files meant to be public. Anything not listed here
+      # cannot reach the live site, even if it gets committed by accident.
+      - name: Assemble publish directory
+        run: |
+          mkdir -p _site
+          cp index.html styles.css app.js og.png Manoj_Mareedu_Resume.pdf _site/
+          test -s _site/Manoj_Mareedu_Resume.pdf
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
