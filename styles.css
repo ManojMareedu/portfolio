@@ -690,14 +690,17 @@ details[open] > summary .plus::after { transform: rotate(0deg); }
 .footer-links { display: flex; gap: 1.2rem; }
 .footer-links a:hover { color: var(--fg); }
 
-/* ---------- reveal ---------- */
-.reveal { opacity: 0; transform: translateY(26px); }
+/* ---------- reveal ----------
+   Hidden only when JS is available (html.js), so a no-JS visitor still
+   sees every word. app.js re-reveals as sections scroll into view. */
+.js .reveal { opacity: 0; transform: translateY(26px); }
 .reveal.in-view {
   opacity: 1; transform: none;
   transition: opacity 0.75s var(--ease) calc(var(--i, 0) * 80ms), transform 0.75s var(--ease) calc(var(--i, 0) * 80ms);
 }
 .mask { display: block; overflow: hidden; }
-.mask > * { display: block; transform: translateY(105%); }
+.js .mask > * { display: block; transform: translateY(105%); }
+.mask > * { display: block; }
 .mask.in-view > * { transform: none; transition: transform 0.9s var(--ease) calc(var(--i, 0) * 90ms); }
 
 /* ---------- responsive ---------- */

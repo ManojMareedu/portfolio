@@ -34,6 +34,18 @@
     try { t = localStorage.getItem("theme"); } catch (e) {}
     if (!t) t = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
     document.documentElement.dataset.theme = t;
+
+    // Scroll reveals only hide content while "js" is set, so the page stays
+    // fully readable with JavaScript disabled.
+    document.documentElement.className = "js";
+
+    // Safety net: if app.js never loads (blocked, slow network, CDN-less
+    // proxy), show everything anyway rather than leaving a blank page.
+    setTimeout(function () {
+      if (window.__revealReady) return;
+      var hidden = document.querySelectorAll(".reveal, .mask, .job");
+      for (var i = 0; i < hidden.length; i++) hidden[i].classList.add("in-view");
+    }, 2500);
   })();
 </script>
 </head>

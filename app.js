@@ -97,6 +97,7 @@
   }
 
   var revealables = document.querySelectorAll(".reveal, .mask, .job");
+  window.__revealReady = true;  // tells the head-script safety net to stand down
 
   if (!("IntersectionObserver" in window)) {
     revealables.forEach(function (el) { el.classList.add("in-view"); });
