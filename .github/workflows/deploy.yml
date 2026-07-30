@@ -21,11 +21,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # enablement:true turns Pages on for the repo and sets its source to
-      # Actions, so no manual repository setting is required.
+      # Reads the repo's Pages config and exports the base URL for the build.
+      # Pages itself is already enabled with "GitHub Actions" as its source.
       - uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - name: Validate the site
         run: python3 tools/check.py
