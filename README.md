@@ -45,7 +45,7 @@ git push
 copies **only** `index.html`, `styles.css`, `app.js`, `og.png`, and the résumé PDF into the
 published site. Nothing else can reach the internet, even if it gets committed by mistake.
 
-Live at `https://manojmareedu.github.io/Portifolio-Website/`.
+Live at `https://manojmareedu.github.io/portfolio/`.
 
 ### Updating the résumé
 
